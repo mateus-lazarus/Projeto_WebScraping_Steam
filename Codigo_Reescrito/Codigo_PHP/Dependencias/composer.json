@@ -1,0 +1,8 @@
+{
+    "require": {
+        "php-webdriver/webdriver": "^1.12",
+        "aeon-php/calendar": "^1.0",
+        "aeon-php/sleep": "^1.0",
+        "rmccue/requests": "^2.0"
+    }
+}

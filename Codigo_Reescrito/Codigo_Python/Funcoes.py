@@ -45,6 +45,8 @@ import Config     # informações que definem a execução do todo
 import datetime     # para formatar segundos em $H:%M:%S
 
 class Tempo:
+    # Dá para ver que essa classe é uma "gambiarra" para que funcione da melhor forma
+
     def __init__(self):
         cronometro = int(time.strftime('%H')) * 3600 + int(time.strftime('%M')) * 60 + int(time.strftime('%S'))      # hora do dia em Segundos
         inicio = f'{data()} iniciado às {hora()}'
@@ -61,11 +63,12 @@ class Tempo:
             text_file.write(f'\n Tempo de Execução : {self.__cronometro}s')
             text_file.close()
             
-        with open(f'{Config.enderecoDaPasta}\Logger_de_Execução.txt', 'w+', encoding='utf-8') as file_2:    # para manter atualizado os LOGS
+        with open(f'{Config.enderecoDaPasta}\Logger_de_Execução.txt', 'r', encoding='utf-8') as file_2:        # para manter atualizado os LOGS
+            arquivoOriginal = file_2.read()
+        with open(f'{Config.enderecoDaPasta}\Logger_de_Execução.txt', 'w+', encoding='utf-8') as file_2:    
             tempoTranscorrido = datetime.timedelta(seconds=self.__cronometro)
             tempoTranscorrido = f'0{tempoTranscorrido}'
             
-            arquivoOriginal = file_2.read()
             file_2.write(arquivoOriginal)
             
             file_2.write(f'\n\t{tempoTranscorrido}\t->->\t {len_listaOrdenada} games em {time.strftime("%d/%m/%Y. Finalizado às %H:%M")}. {"{:.3f}".format(self.__cronometro / len_listaOrdenada)}s por jogo \n')
@@ -189,7 +192,7 @@ def chutarInteiro(início, limite) -> int:
 from json import dump
 
 def escreverListaTemp(listaJogosBons, nomeInstancia) -> None:
-    with open(f'{Config.enderecoDaPasta}/{nomeInstancia}-Temporário.txt', 'w', encoding='utf-8') as text_file:
+    with open(f'{Config.enderecoDaPasta}\{nomeInstancia}-Temporário.txt', 'w', encoding='utf-8') as text_file:
         dump(listaJogosBons, text_file, ensure_ascii=False)
         text_file.close()
 

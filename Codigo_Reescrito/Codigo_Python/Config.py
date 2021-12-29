@@ -16,9 +16,9 @@ criteriosDeReview = [
 criterioEmVigor = criteriosDeReview[2]
 
 
-enderecoDaPasta = ''
-enderecoDoCodigo = ''
-chromeDriver = ''
+enderecoDaPasta = r'C:\Users\Pichau\Documents\Blocos de Anotações do OneNote\SiteSteam'
+enderecoDoCodigo = r'C:\Users\Pichau\Desktop\Python\Area_de_Testes\Programas\Reescrevendo_Código\Projeto_WebScraping_Steam\Codigo_Reescrito\Codigo_Python'
+chromeDriver = r'C:\Python\SeleniumPackages\chromedriver.exe'
 
 # Caracteres máximos para a descrição do jogo
 caracteresMaximos = 300

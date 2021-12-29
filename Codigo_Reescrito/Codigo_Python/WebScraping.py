@@ -195,7 +195,7 @@ def listarJogos(descontoMinimo, webdriver) -> list:
                     
                         precoAntes_formatado = formatarPreco(precoAntes)      # para ser possível fazer uma conta matemática
                         precoDepois_formatado = formatarPreco(precoDepois)    # para ser possível fazer uma conta matemática
-                        descontoCalculado = 1 - (precoAntes_formatado / precoDepois_formatado)
+                        descontoCalculado = 1 - (precoDepois_formatado / precoAntes_formatado)
                         descontoCalculado = descontoCalculado * 100
                         descontoCalculado = '{:.0f}%'.format(descontoCalculado)
                         
