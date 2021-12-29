@@ -64,10 +64,3 @@ class Jogo
         return $this->contador;
     }
 }
-
-
-
-
-
-
-
