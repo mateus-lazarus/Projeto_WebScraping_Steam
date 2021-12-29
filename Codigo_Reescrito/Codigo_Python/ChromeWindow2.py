@@ -8,8 +8,6 @@ import Config                                           # Informações básicas
 
 from selenium import webdriver as Swd
 
-from Funcoes import esperar                             # Substituí o time.sleep
-
 from Config import SteamTags                            #   apenas para facilitar o acesso
 
 from WebScraping import lerPagina                       # Irá devolver uma lista de jogos        
