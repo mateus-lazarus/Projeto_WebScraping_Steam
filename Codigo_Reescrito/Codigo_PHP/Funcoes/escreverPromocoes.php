@@ -3,7 +3,8 @@
     //   modelo do dicionário :
     //   [nomeJogo, precoAntes, precoDepois, desconto, linkJogo, linkFoto, descricaoJogo]
 
-require 'Codigo_Reescrito\Codigo_PHP\Config.php';
+require_once '.\Config.php';
+require_once 'data.php';
 
 function escreverPromocoes(array $listaOrdenada, int $len_listaOrdenada, bool $debugger = true) : void
 {
@@ -43,11 +44,3 @@ function escreverPromocoes(array $listaOrdenada, int $len_listaOrdenada, bool $d
         fclose($debugger);
     }
 }
-
-
-
-
-
-
-
-

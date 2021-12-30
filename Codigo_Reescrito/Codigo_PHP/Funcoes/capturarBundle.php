@@ -4,6 +4,10 @@ use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 
+require_once 'chutarInteiro.php';
+require_once 'esperar.php';
+
+
 function capturarBundle(string $jogoLink, RemoteWebDriver $webdriver) : array
 {
     // Para facilitar o acesso
@@ -33,7 +37,7 @@ function capturarBundle(string $jogoLink, RemoteWebDriver $webdriver) : array
     try {
         try {
             // Espera para encontrar a foto do jogo, a melhor base para saber se é um BUNDLE ou um JOGO
-            $esperarElemento = $wb->wait(4, 500)->until(
+            $wb->wait(6, 500)->until(
                 WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::xpath('//*[@id="gameHeaderImageCtn"]/img'))
             );
 
@@ -76,6 +80,6 @@ function capturarBundle(string $jogoLink, RemoteWebDriver $webdriver) : array
     $wb->executeScript('window.close()');
     $wb->switchTo()->window($janelaInicial);
 
-
+    var_dump([$linkVideo, $linkFoto, $jogoDescricao]);
     return [$linkVideo, $linkFoto, $jogoDescricao];
 }

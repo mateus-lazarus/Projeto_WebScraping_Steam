@@ -1,12 +1,14 @@
 <?php
 
-require 'Codigo_Reescrito\Codigo_PHP\Config.php';
+require_once '.\Config.php';
 
 function escreverListaTemporaria(array $listaJogosBons, string $nomeInstancia) : void
 {
-    global $EnderecoDaPasta;
+    global $enderecoDaPasta;
     
-    $arquivo = fopen("$EnderecoDaPasta\\$nomeInstancia-Temporario.txt", 'w');
+    $acessoArquivo = "$enderecoDaPasta\\$nomeInstancia-Temporario.txt";
+
+    $arquivo = fopen($acessoArquivo, 'w');
     fwrite($arquivo, json_encode($listaJogosBons));
     fclose($arquivo);
 }

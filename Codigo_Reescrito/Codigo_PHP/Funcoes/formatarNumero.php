@@ -35,7 +35,3 @@ function formatarNumero(float | string $numero, int $casasFrente, int $casasTras
     
     return $objetoDecimal . '.' . $objetoFloat[1];
 }
-
-
-
-

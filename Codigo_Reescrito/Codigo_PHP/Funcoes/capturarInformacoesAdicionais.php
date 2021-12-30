@@ -3,6 +3,9 @@
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverBy;
 
+require_once 'capturarPagina.php';
+require_once 'capturarBundle.php';
+
 function capturarInformacoesAdicionais(string $linkJogo, int $contagem_de_rodadas, int &$ERRO_MENOR, RemoteWebDriver $webdriver) : array
 {
     if (str_contains($linkJogo, 'app')) {
@@ -18,6 +21,3 @@ function capturarInformacoesAdicionais(string $linkJogo, int $contagem_de_rodada
         return [$linkVideo, $linkFoto, $descricaoJogo];
     }
 }
-
-
-

@@ -3,8 +3,14 @@
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\Exception\NoSuchElementException;
+use JetBrains\PhpStorm\ExpectedValues;
 
-require 'Codigo_Reescrito\Codigo_PHP\Config.php';
+require_once '.\Config.php';
+require_once 'verificarReview.php';
+require_once 'lerDesconto.php';
+require_once 'capturarInformacoesAdicionais.php';
+require_once 'formatarNumero.php';
+require_once '.\Classes\Jogo.php';
 
 function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, RemoteWebDriver $webdriver) : array
 {
@@ -25,23 +31,26 @@ function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, 
 
     for ($contagem_de_rodadas = 1; $contagem_de_rodadas <= $numeroJogosLidos + 1; $contagem_de_rodadas++) {
         $x = $contagem_de_rodadas;
+        echo "Contagem de rodadas : $x" . PHP_EOL;
         
         try {
             // Para casos de jogos sem o ícone de avaliação
             try {
-                $reviewLido = $wb->findElement(WebDriverBy::xpath("$XP/a/[$x]/div[2]/div[3]/span"));
+                $reviewLido = $wb->findElement(WebDriverBy::xpath("$XP/a[$x]/div[2]/div[3]/span"));
                 $reviewLido = $reviewLido->getAttribute('data-tooltip-html');
-                $reviewLido = substr($reviewLido, 0, -strpos($reviewLido, '<br>'));
+                $reviewLido = substr($reviewLido, 0, strpos($reviewLido, '<br>'));
                 // Para saber mais do que foi feito : https://www.php.net/manual/en/function.substr
+                echo "Review sendo lido : $reviewLido" . PHP_EOL;
             }
 
-            catch (NoSuchElementException) {
-                $reviewLido = null;
+            catch (Exception $e) {
+                echo 'Error. REVIEW LIDO.' . PHP_EOL . $e->getMessage() . PHP_EOL;
                 continue;
             }
 
 
             if (verificarReview($reviewLido, $criterioEmVigor, $criteriosDeReview)) {
+                echo "Verificando review mesmo..." . PHP_EOL;
                 // Para quando o desconto retornar vazio (algo impossível, pois eu já coloquei o critério de apenas mostrar jogos com desconto)
                 $descontoLido = lerDesconto($XP, $x, $webdriver);
                 if ($descontoLido == false) {
@@ -54,6 +63,9 @@ function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, 
 
                     try {
                         [$linkVideo, $linkFoto, $descricaoJogo] = capturarInformacoesAdicionais($linkJogo, $x, $ERRO_MENOR, $webdriver);
+                        if ($linkFoto == null) {
+                            throw new Exception();
+                        }
                     }
 
                     catch (Exception $e) {
@@ -96,9 +108,19 @@ function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, 
                         continue;
                     }
 
+                    if ($linkVideo == 0 || $linkVideo == '') {
+                        if ($linkFoto == '') {
+                            $objetoTemporario = new Jogo($nomeJogoLido, $precoAntes, $precoDepois, $linkJogo);
+                        }
 
-                    $objetoTemporario = new Jogo($nomeJogoLido, $precoAntes, $precoDepois, $linkJogo, $linkVideo, $linkFoto, $descricaoJogo);
-                    array_push($listaJogosBons, $objetoTemporario);
+                        $objetoTemporario = new Jogo($nomeJogoLido, $precoAntes, $precoDepois, $linkJogo, link_foto:$linkFoto, descricao_jogo:$descricaoJogo);
+                    }
+
+                    else {
+                        $objetoTemporario = new Jogo($nomeJogoLido, $precoAntes, $precoDepois, $linkJogo, $linkVideo, $linkFoto, $descricaoJogo);
+                    }
+                    
+                    array_push($listaJogosBons, $objetoTemporario->devolverInfo());
                     unset($objetoTemporario);
                 }
             }
@@ -113,7 +135,7 @@ function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, 
             echo PHP_EOL . $e->getMessage();
             echo "\n\n\n\n";
 
-            #esperar(900);
+            esperar(900);
             continue;
         }
         

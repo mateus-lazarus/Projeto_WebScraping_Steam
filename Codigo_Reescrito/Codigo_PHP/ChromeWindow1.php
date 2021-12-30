@@ -7,21 +7,23 @@
 */
 
 
-require 'Codigo_Reescrito\Codigo_PHP\Config.php';
+require_once 'Config.php';
 
+require_once 'Dependencias/vendor/autoload.php';
 use Facebook\WebDriver\Remote\RemoteWebDriver;
-
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 
-
+require_once 'Classes/SteamTags.php';
+require_once 'Funcoes/lerPagina.php';
+require_once 'Funcoes/escreverListaTemporaria.php';
 
 $nomeInstancia = $instanciaUm;
 
-$serverUrl = 'http://localhost:4441';
+$serverUrl = 'http://localhost:4444';
 $webdriver = RemoteWebDriver::create($serverUrl, DesiredCapabilities::chrome());
 
 $linkDaPagina = new SteamTags();
-$linkDaPagina = $linkDaPagina->linkComTag($linkDaPagina->multiplayer, $valorMaximo);
+$linkDaPagina = $linkDaPagina->linkComTag($linkDaPagina->online_coop, $valorMaximo);
 
 $webdriver->get($linkDaPagina);
 

@@ -10,45 +10,25 @@
 */
 
 
-# require 'Codigo_Reescrito\Codigo_PHP\Config.php';
-
+// require '..\Config.php';
 
 
 function verificarReview(string $review, string $criterioEmVigor, array $criteriosDeReview) : bool
 { 
-    # Esse código funcionará diferentemente de Python pois a linguagem permite outra abordagem
+    // Esse código funcionará diferentemente de Python pois a linguagem permite outra abordagem
     $reviewMinimo = array_search($criterioEmVigor, $criteriosDeReview);
 
-    if(array_search($review, $criteriosDeReview) > $reviewMinimo) {
+    $reviewIndex = array_search($review, $criteriosDeReview);
+    echo "\n\n\n\n array search : $review\n criterio de minimo : $reviewMinimo\n posição do review : $reviewIndex\n\n\n\n";
+    if(array_search($review, $criteriosDeReview) <= $reviewMinimo) {
         return true;
     };
 
     return false;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+echo "ordem 0 : " . $criteriosDeReview[0] . PHP_EOL;
+echo "ordem 1 : " . $criteriosDeReview[1] . PHP_EOL;
+echo "ordem 2 : " . $criteriosDeReview[2] . PHP_EOL;
+echo "ordem 3 : " . $criteriosDeReview[3] . PHP_EOL;
+*/

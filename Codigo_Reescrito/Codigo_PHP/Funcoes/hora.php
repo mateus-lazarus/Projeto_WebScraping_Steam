@@ -6,7 +6,7 @@
 # Fonte para códigos de formatação : https://www.php.net/manual/en/datetime.format.php
 
 
-require 'C:/Users/Pichau/Desktop/Python/Area_de_Testes/Programas/Reescrevendo_Código\Projeto_WebScraping_Steam/Codigo_Reescrito/Codigo_PHP/Dependencias/vendor/autoload.php';
+require_once './Dependencias/vendor/autoload.php';
 use Aeon\Calendar\Gregorian\GregorianCalendar;
 use Aeon\Calendar\Gregorian\TimeZone;
 
@@ -23,7 +23,3 @@ function hora() : string
     $dateTime = new GregorianCalendar(TimeZone::americaSaoPaulo());
     return $dateTime->now()->time()->format('G:i:s');
 }
-
-
-
-

@@ -3,18 +3,18 @@
 
 class Jogo
 {
-    private static $contador = 0;
+    private static int $contador = 0;
 
     private string $nomeJogo;
-    private float $precoAntes;
-    private float $precoDepois;
+    private float | string $precoAntes;
+    private float | string $precoDepois;
     private string $linkJogo;
-    private string $linkVideo;
+    private string | int $linkVideo;
     private string $linkFoto;
     private string $descricaoJogo;
 
 
-    public function __construct(string $nome_jogo, float $preco_antes, float $preco_depois, string $link_jogo, string $link_video = '', string $link_foto = '', string $descricao_jogo = '')
+    public function __construct(string $nome_jogo, float $preco_antes, float $preco_depois, string $link_jogo, string | int $link_video = '', string $link_foto = '', string $descricao_jogo = '')
     {
         $this->nomeJogo = $nome_jogo;
         $this->precoAntes = $preco_antes;
@@ -24,7 +24,7 @@ class Jogo
         $this->linkFoto = $link_foto;
         $this->descricaoJogo = $descricao_jogo;
 
-        $this->contador++;
+        self::$contador++;
     }
 
     public function devolverInfo() : array

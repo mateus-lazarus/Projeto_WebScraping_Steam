@@ -4,7 +4,7 @@
 #  estou separando para que fique fácil tanto a manutenção quanto a leitura do código
 
 
-require 'C:/Users/Pichau/Desktop/Python/Area_de_Testes/Programas/Reescrevendo_Código\Projeto_WebScraping_Steam/Codigo_Reescrito/Codigo_PHP/Dependencias/vendor/autoload.php';
+require_once './Dependencias/vendor/autoload.php';
 use Aeon\Calendar\Gregorian\GregorianCalendar;
 
 /*
@@ -20,7 +20,3 @@ function data() : string
     $data = GregorianCalendar::UTC()->now()->day()->format('d-m-Y');
     return $data;
 }
-
-
-
-

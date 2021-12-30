@@ -2,7 +2,9 @@
 
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 
-require 'Codigo_Reescrito\Codigo_PHP\Config.php';
+require_once '.\Config.php';
+require_once 'rolarPagina.php';
+require_once 'listarJogos.php';
 
 
 function lerPagina(RemoteWebDriver $webdriver) : array

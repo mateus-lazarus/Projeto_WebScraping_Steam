@@ -1,6 +1,6 @@
 <?php
 
-require 'Codigo_Reescrito\Codigo_PHP\Config.php';
+require '.\Config.php';
 
 function montarListasTemporarias() : array
 {

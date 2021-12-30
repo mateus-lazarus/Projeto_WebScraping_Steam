@@ -2,7 +2,10 @@
 
 // Para mais informações : https://www.w3schools.com/php/php_file_create.asp
 
-require 'Codigo_Reescrito\Codigo_PHP\Config.php';
+require_once '.\Config.php';
+require_once 'data.php';
+require_once 'hora.php';
+require_once 'formatarNumero.php';
 
 function escreverTempoDeExecucao(int $count_listaOrdenada, string $horaZero, string $tempoTotal)
 {

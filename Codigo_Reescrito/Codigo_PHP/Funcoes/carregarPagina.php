@@ -1,5 +1,7 @@
 <?php
 
+
+require_once './Dependencias/vendor/autoload.php';
 use WpOrg\Requests\Requests;
 
 function carregarPagina(string $jogoID)
@@ -30,25 +32,10 @@ function carregarPagina(string $jogoID)
         return;
     }    
 }
+/*
+$link = 'http://store.steampowered.com/api/appdetails?appids=289070';
+$pagina = Requests::get($link);
+$body = json_decode($pagina->body);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var_dump($body->{289070}->{'success'});
+*/
