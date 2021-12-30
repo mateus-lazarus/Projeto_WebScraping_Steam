@@ -18,7 +18,7 @@ $criterioEmVigor = $criteriosDeReview[1];
 
 
 $enderecoDaPasta = 'C:\Users\Pichau\Documents\Blocos de Anotações do OneNote\SiteSteam';
-$enderecoDoCodigo = 'C:\Users\Pichau\Desktop\Python\Area_de_Testes\Programas\Reescrevendo_Código\Projeto_WebScraping_Steam\Codigo_Reescrito\Codigo_Python';
+$enderecoDoCodigo = 'C:\Users\Pichau\Desktop\Python\Area_de_Testes\Programas\Reescrevendo_Código\Projeto_WebScraping_Steam\Codigo_Reescrito\Codigo_PHP';
 $chromeDriver = 'C:\Python\SeleniumPackages\chromedriver.exe';
 
 // Caracteres máximos para a descrição do jogo

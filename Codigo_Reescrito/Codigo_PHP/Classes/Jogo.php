@@ -59,8 +59,8 @@ class Jogo
         return $informacoes;
     }
 
-    public function devolverContador() : int
+    static function devolverContador() : int
     {
-        return $this->contador;
+        return self::$contador;
     }
 }

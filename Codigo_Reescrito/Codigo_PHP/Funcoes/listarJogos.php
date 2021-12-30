@@ -50,7 +50,6 @@ function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, 
 
 
             if (verificarReview($reviewLido, $criterioEmVigor, $criteriosDeReview)) {
-                echo "Verificando review mesmo..." . PHP_EOL;
                 // Para quando o desconto retornar vazio (algo impossível, pois eu já coloquei o critério de apenas mostrar jogos com desconto)
                 $descontoLido = lerDesconto($XP, $x, $webdriver);
                 if ($descontoLido == false) {

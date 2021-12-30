@@ -19,7 +19,7 @@ function verificarReview(string $review, string $criterioEmVigor, array $criteri
     $reviewMinimo = array_search($criterioEmVigor, $criteriosDeReview);
 
     $reviewIndex = array_search($review, $criteriosDeReview);
-    echo "\n\n\n\n array search : $review\n criterio de minimo : $reviewMinimo\n posição do review : $reviewIndex\n\n\n\n";
+
     if(array_search($review, $criteriosDeReview) <= $reviewMinimo) {
         return true;
     };
