@@ -6,7 +6,7 @@
 require_once '.\Config.php';
 require_once 'data.php';
 
-function escreverPromocoes(array $listaOrdenada, int $len_listaOrdenada, bool $debugger = true) : void
+function escreverPromocoes(array $listaOrdenada, int $len_listaOrdenada, string $horaZero, string $tempoTotalString, bool $debugger = true) : void
 {
     global $enderecoDaPasta;
     
@@ -20,10 +20,10 @@ function escreverPromocoes(array $listaOrdenada, int $len_listaOrdenada, bool $d
     fwrite($arquivo, "\n\n");
 
     foreach ($listaOrdenada as $value) {
-        $tempNome = $value[0];
-        $tempPrecoAntes = $value[1];
-        $tempPrecoDepois = $value[2];
-        $tempDesconto = $value[3];
+        $tempNome = $value->nomeJogo;
+        $tempPrecoAntes = "R$ {$value->precoAntes}";
+        $tempPrecoDepois = "R$ {$value->precoDepois}";
+        $tempDesconto = "{$value->desconto}%";
 
         fwrite($arquivo, "$tempNome\t\n\t$tempPrecoAntes\t-->\t$tempPrecoDepois || $tempDesconto\n");
     }
@@ -33,13 +33,21 @@ function escreverPromocoes(array $listaOrdenada, int $len_listaOrdenada, bool $d
 
 
     if ($debugger) {
-        $debugger = fopen("$enderecoDaPasta\\Debugger.txt", 'w');
-        fwrite($debugger, "Contagem de entradas : $len_listaOrdenada");
-        fwrite($debugger, "\n\n\n\n");
+        $debugger = fopen("$enderecoDaPasta\\Debugger.json", 'w');
 
-        foreach ($listaOrdenada as $value) {
-            fwrite($arquivo, json_encode($value));
-        }
+        $jsonForm = [
+            'Success' => 'true',
+            'Hora_de_inicio' => $horaZero,
+            'Tempo_de_execucao' => $tempoTotalString,
+            'Entradas' => $len_listaOrdenada,
+            'Debugger' => $listaOrdenada
+        ];
+
+        // foreach ($listaOrdenada as $value) {
+        //     fwrite($arquivo, json_encode($value));
+        // }
+
+        fwrite($debugger, json_encode($jsonForm, JSON_PRETTY_PRINT));
 
         fclose($debugger);
     }

@@ -6,7 +6,7 @@
 # Fonte para códigos de formatação : https://www.php.net/manual/en/datetime.format.php
 
 
-require_once './Dependencias/vendor/autoload.php';
+require_once __DIR__ . '/../Dependencias/vendor/autoload.php';
 use Aeon\Calendar\Gregorian\GregorianCalendar;
 use Aeon\Calendar\Gregorian\TimeZone;
 

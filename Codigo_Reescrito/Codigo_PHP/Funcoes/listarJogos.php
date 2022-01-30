@@ -31,7 +31,7 @@ function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, 
 
     for ($contagem_de_rodadas = 1; $contagem_de_rodadas <= $numeroJogosLidos + 1; $contagem_de_rodadas++) {
         $x = $contagem_de_rodadas;
-        echo "Contagem de rodadas : $x" . PHP_EOL;
+        // echo "Contagem de rodadas : $x" . PHP_EOL;
         
         try {
             // Para casos de jogos sem o ícone de avaliação
@@ -40,11 +40,12 @@ function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, 
                 $reviewLido = $reviewLido->getAttribute('data-tooltip-html');
                 $reviewLido = substr($reviewLido, 0, strpos($reviewLido, '<br>'));
                 // Para saber mais do que foi feito : https://www.php.net/manual/en/function.substr
-                echo "Review sendo lido : $reviewLido" . PHP_EOL;
+                // echo "Review sendo lido : $reviewLido" . PHP_EOL;
             }
 
             catch (Exception $e) {
                 echo 'Error. REVIEW LIDO.' . PHP_EOL . $e->getMessage() . PHP_EOL;
+                sleep(900);
                 continue;
             }
 

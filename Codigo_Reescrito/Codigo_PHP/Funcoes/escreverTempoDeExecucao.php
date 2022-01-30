@@ -7,18 +7,18 @@ require_once 'data.php';
 require_once 'hora.php';
 require_once 'formatarNumero.php';
 
-function escreverTempoDeExecucao(int $count_listaOrdenada, string $horaZero, string $tempoTotal)
+function escreverTempoDeExecucao(int $count_listaOrdenada, int $tempoTotal, string $horaZero, string $tempoTotalString)
 {
     global $enderecoDaPasta;
     
     $arquivoExecucaoUm = fopen("$enderecoDaPasta\Tempo_de_execucao.txt", 'w');
     fwrite($arquivoExecucaoUm, "⭐ $horaZero\n");
-    fwrite($arquivoExecucaoUm, "\nTempo de Execução : $tempoTotal");
+    fwrite($arquivoExecucaoUm, "\nTempo de Execução : $tempoTotalString");
     fclose($arquivoExecucaoUm);
 
 
     $arquivoExecucaoDois = fopen("$enderecoDaPasta\Tempo_de_execucao.txt", 'a');
-    $frase1 = "\n\t$tempoTotal\t->->\t $count_listaOrdenada games em ";
+    $frase1 = "\n\t$tempoTotalString\t->->\t $count_listaOrdenada games em ";
     $frase2 = data() . '. Finalizado às ' . hora() . '. ';
 
     $segundosPorJogo = $tempoTotal / $count_listaOrdenada;

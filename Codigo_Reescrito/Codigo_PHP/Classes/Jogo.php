@@ -3,18 +3,16 @@
 
 class Jogo
 {
-    private static int $contador = 0;
-
     private string $nomeJogo;
     private float | string $precoAntes;
     private float | string $precoDepois;
     private string $linkJogo;
-    private string | int $linkVideo;
-    private string $linkFoto;
+    private string | null $linkVideo;
+    private string | null $linkFoto;
     private string $descricaoJogo;
 
 
-    public function __construct(string $nome_jogo, float $preco_antes, float $preco_depois, string $link_jogo, string | int $link_video = '', string $link_foto = '', string $descricao_jogo = '')
+    public function __construct(string $nome_jogo, float $preco_antes, float $preco_depois, string $link_jogo, string | null $link_video = null, string | null $link_foto = null, string $descricao_jogo = '')
     {
         $this->nomeJogo = $nome_jogo;
         $this->precoAntes = $preco_antes;
@@ -23,8 +21,6 @@ class Jogo
         $this->linkVideo = $link_video;
         $this->linkFoto = $link_foto;
         $this->descricaoJogo = $descricao_jogo;
-
-        self::$contador++;
     }
 
     public function devolverInfo() : array
@@ -34,33 +30,28 @@ class Jogo
 
         if ($divisao > 0) {
             $desconto = (1 - $divisao) * 100;
-            $desconto = formatarNumero($desconto, 2, 1, porcentagem: true);
+            $desconto = formatarNumero($desconto, 2, 1, porcentagem: false);
         }
         else {
             $desconto = 'Erro.';
         }
 
 
-        $this->precoAntes = formatarNumero($this->precoAntes, 2, 2, simboloMoeda: true);
-        $this->precoDepois = formatarNumero($this->precoDepois, 2, 2, simboloMoeda: true);
+        $this->precoAntes = formatarNumero($this->precoAntes, 2, 2, simboloMoeda: false);
+        $this->precoDepois = formatarNumero($this->precoDepois, 2, 2, simboloMoeda: false);
 
 
         $informacoes = [
-            $this->nomeJogo,
-            $this->precoAntes,
-            $this->precoDepois,
-            $desconto,
-            $this->linkJogo,
-            $this->linkVideo,
-            $this->linkFoto,
-            $this->descricaoJogo
+            'nomeJogo' => $this->nomeJogo,
+            'precoAntes' => $this->precoAntes,
+            'precoDepois' => $this->precoDepois,
+            'desconto' => $desconto,
+            'linkJogo' => $this->linkJogo,
+            'linkVideo' => $this->linkVideo,
+            'linkFoto' => $this->linkFoto,
+            'descricaoJogo' => $this->descricaoJogo
         ];
 
         return $informacoes;
-    }
-
-    static function devolverContador() : int
-    {
-        return self::$contador;
     }
 }

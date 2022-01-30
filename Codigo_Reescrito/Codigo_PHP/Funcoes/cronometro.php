@@ -4,8 +4,9 @@
 #  estou separando para que fique fácil tanto a manutenção quanto a leitura do código
 
 
-require_once './Dependencias/vendor/autoload.php';
+require_once __DIR__ . '/../Dependencias/vendor/autoload.php';
 require_once 'formatarHora.php';
+require_once 'hora.php';
 
 use Aeon\Calendar\Stopwatch;
 
@@ -47,13 +48,25 @@ class Cronometro extends Stopwatch
         return $this->laps();
     }
 
-    public function tempoMarcacao(int $IdMarcacao) : string
+    public function tempoMarcacao(int $IdMarcacao) : int
+    {
+        $tempoDecorrido = $this->elapsedTime($IdMarcacao)->inSeconds();
+        return $tempoDecorrido;
+    }
+
+    public function tempoMarcacaoString(int $IdMarcacao) : int
     {
         $tempoDecorrido = $this->elapsedTime($IdMarcacao)->inSeconds();
         return formatarHora($tempoDecorrido);
     }
 
-    public function tempoTotal() : string
+    public function tempoTotal() : int
+    {
+        $tempoTotal = $this->totalElapsedTime()->inSeconds();
+        return $tempoTotal;
+    }
+
+    public function tempoTotalString() : string
     {
         $tempoTotal = $this->totalElapsedTime()->inSeconds();
         return formatarHora($tempoTotal);

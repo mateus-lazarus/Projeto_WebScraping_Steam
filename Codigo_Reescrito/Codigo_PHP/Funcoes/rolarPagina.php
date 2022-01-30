@@ -4,6 +4,7 @@ use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverBy;
 
 require_once 'esperar.php';
+require_once __DIR__ . '/../Config.php';
 
 function rolarPagina(RemoteWebDriver $webdriver, string $xpath) : int
 {
@@ -11,7 +12,8 @@ function rolarPagina(RemoteWebDriver $webdriver, string $xpath) : int
 
     # Enquanto a quantidade de jogos aumentar, continuará descendo a página
     # Vi que é bom definir um limite de rolagem, pois a steam já está configurada para mostrar por ordem de relevância
-    $rolagem = 2;
+    global $rolagemMaxima;
+    $rolagem = 0;
 
     while (true)
     {
@@ -20,7 +22,7 @@ function rolarPagina(RemoteWebDriver $webdriver, string $xpath) : int
 
         $novaContagem = count($webdriver->findElements(WebDriverBy::xpath("$xpath/a")));
         
-        if ($rolagem > 2) {
+        if ($rolagemMaxima < $rolagem) {
             return $jogosMostrados;
         }
 

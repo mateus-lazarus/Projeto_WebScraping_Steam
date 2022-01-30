@@ -19,7 +19,7 @@ require_once 'Funcoes/escreverListaTemporaria.php';
 
 $nomeInstancia = $instanciaDois;
 
-$serverUrl = 'http://localhost:4444';
+$serverUrl = 'http://localhost:' . $chromeDriverPort;
 $webdriver = RemoteWebDriver::create($serverUrl, DesiredCapabilities::chrome());
 
 $linkDaPagina = new SteamTags();

@@ -6,6 +6,7 @@ use Facebook\WebDriver\WebDriverExpectedCondition;
 
 require_once 'chutarInteiro.php';
 require_once 'esperar.php';
+require_once __DIR__ . '/Webdriver/findElementWithWait.php';
 
 
 function capturarBundle(string $jogoLink, RemoteWebDriver $webdriver) : array
@@ -18,20 +19,24 @@ function capturarBundle(string $jogoLink, RemoteWebDriver $webdriver) : array
     $wb->switchTo()->window($wb->getWindowHandles()[1]);
     $wb->get($jogoLink);
 
+    
+
     if (str_contains($wb->getCurrentURL(), 'agecheck')) {
-        $wb->findElement(WebDriverBy::xpath('//*[@id="ageYear"]'))->click();
+        // Tentativa de Correção : 1
+        // Criei uma nova função "findElementWithWait"
+        findElementWithWait($wb, 30, 100, '//*[@id="ageYear"]')->click();
         $chutarInteiro = chutarInteiro(0, 5);
-        $wb->findElement(WebDriverBy::xpath("//*[@id='ageYear']/option[$chutarInteiro]"))->click();
+        findElementWithWait($wb, 30, 100, "//*[@id='ageYear']/option[$chutarInteiro]")->click();
         
-        $wb->findElement(WebDriverBy::xpath('//*[@id="ageDay"]'))->click();
+        findElementWithWait($wb, 30, 100, '//*[@id="ageDay"]')->click();
         $chutarInteiro = chutarInteiro(0, 12);
-        $wb->findElement(WebDriverBy::xpath("//*[@id='ageDay']/option[$chutarInteiro]"))->click();
+        findElementWithWait($wb, 30, 100, "//*[@id='ageDay']/option[$chutarInteiro]")->click();
         
-        $wb->findElement(WebDriverBy::xpath('//*[@id="ageMonth"]'))->click();
+        findElementWithWait($wb, 30, 100, '//*[@id="ageMonth"]')->click();
         $chutarInteiro = chutarInteiro(0, 3);
-        $wb->findElement(WebDriverBy::xpath("//*[@id='ageMonth']/option[$chutarInteiro]"))->click();
+        findElementWithWait($wb, 30, 100, "//*[@id='ageMonth']/option[$chutarInteiro]")->click();
         
-        $wb->findElement(WebDriverBy::xpath('//*[@class="agegate_text_container btns"]/a[1]'))->click();
+        findElementWithWait($wb, 30, 100, '//*[@class="agegate_text_container btns"]/a[1]')->click();
     }
 
     try {
@@ -74,12 +79,10 @@ function capturarBundle(string $jogoLink, RemoteWebDriver $webdriver) : array
         }
     }
 
-
-
     $janelaInicial = $wb->getWindowHandles()[0];
     $wb->executeScript('window.close()');
     $wb->switchTo()->window($janelaInicial);
 
-    var_dump([$linkVideo, $linkFoto, $jogoDescricao]);
+
     return [$linkVideo, $linkFoto, $jogoDescricao];
 }

@@ -1,0 +1,44 @@
+Padronização para comentários no código.
+
+// Tentativa de Correção 
+    servem para tentar corregir bugs criados ou problemas que possam aparecer no código, sempre serão seguidos do número do problema que tentam solucionar
+
+// Tentativa de Melhoria
+    servem para implementar novas features ou refatorar o código, sempre serão seguidos do número da melhoria a ser implementada
+
+
+
+
+........................................................................... 
+........................................................................... 
+........................................................................... 
+........................................................................... 
+........................................................................... 
+
+
+CORREÇÕES
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+1 : Há um problema de verificação em BUNDLES que exigem VERIFICAÇÃO DE IDADE.
+
+    Informações : 
+        Tanto no momento de checar se é uma página de verificação de idade quanto no momento de preencher os dados por vezes há um problema de lentidão e isso
+            faz com que o código aponte um falso negativo e tente prosseguir da maneira errada
+
+    Solução :
+        Implementação de uma nova função de FindElement com wait acoplado.
+
+
+
+........................................................................... 
+........................................................................... 
+........................................................................... 
+........................................................................... 
+........................................................................... 
+
+
+MELHORIAS
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+

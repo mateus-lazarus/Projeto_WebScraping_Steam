@@ -3,6 +3,7 @@
 // Arquivo para definições do código que irá rodar, assim não será necessário mexer em nada do "hard-code" para alterações
 //   de comportamento básicas
 
+$chromeDriverPort = 9515;
 
 $descontoMinimo = 80;   
 $valorMaximo = 20;      // dos jogos, já considerando desconto
@@ -15,6 +16,7 @@ $criteriosDeReview = array(
 );
 
 $criterioEmVigor = $criteriosDeReview[1];
+$rolagemMaxima = 2;
 
 
 $enderecoDaPasta = 'C:\Users\Pichau\Documents\Blocos de Anotações do OneNote\SiteSteam';

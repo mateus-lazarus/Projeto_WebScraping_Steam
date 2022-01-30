@@ -1,127 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto+Condensed&family=Roboto+Mono:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Island+Moments&family=Licorice&family=Montserrat:wght@400;600&family=Roboto+Condensed&family=Roboto+Mono:wght@300&display=swap');
-
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Island+Moments&family=Licorice&family=Montserrat:wght@400600&family=Roboto+Condensed&family=Roboto+Mono:wght@300&display=swap");
 .cabecalho {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 6px;
+  background-color: #a9b1a06e;
 }
 
 a {
-    text-decoration: none;
+  color: none;
+  text-decoration: none;
+}
+
+a:hover {
+  color: none;
+  text-decoration: none;
 }
 
 .cabecalho-identificador {
-    border-left: 5px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient( to bottom,  rgb(194, 46, 142), rgb(77, 73, 73));
-    display: flex;
-    flex-direction: column;
-    padding: 0.5%;
-    margin-top: 1%;
-    margin-right: 3%;
-    margin-left: 4%;
-    width: fit-content;
-}
-
-.cabecalho-identificador h3 {
-    font-size: 1.4em;
-    color: azure;
-    -webkit-text-stroke: 1px;
-    -webkit-text-stroke-color: grey;
-    display: block;
-    padding: 0.3%;
+  border-left: 5px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to bottom, rgba(194, 46, 142, 0.5), rgba(77, 73, 73, 0.25));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0.5%;
+  margin-top: 1%;
+  margin-right: 3%;
+  margin-left: 4%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .cabecalho-identificador:hover {
-    transform: scale3d(1.3);
-    font-size: 3em;
-    text-shadow: 0 0 3cm yellow;
-    position: relative;
-    top: -12px;
-    left: -15px;
-    white-space: nowrap;
-    -webkit-transition: all 1s;
-    transition: all 1s;
+  text-shadow: 0 0 3cm yellow;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.cabecalho-identificador h3 {
+  font-size: 1.5em;
+  color: rgba(240, 255, 255, 0);
+  -webkit-text-stroke: 0.7px;
+  -webkit-text-stroke-color: #262626;
+  display: block;
+  padding: 0.3%;
+}
+
+.cabecalho-identificador h3:hover {
+  color: rgba(240, 255, 255, 0.46);
+  -webkit-text-stroke: 1px;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
 }
 
 .cabecalho-menu {
-    min-width: 800px;
-    margin-top: 1%;
-    padding: 1em;
-    border: 3px solid red;
+  margin-top: 1%;
+  padding: 1em;
+  /* border: 3px solid red */
 }
 
-.cabecalho-menu-item {
-    font-size: 1.2em;
-    font-family: 'Roboto Mono', monospace;
-    color: rgb(70, 135, 18);
-    text-shadow: 2px 3px 4px rgb(250, 250, 250);
-    background-color: rgba(114, 114, 114, 0.268);
-    padding: 1em auto;
-    margin-right: 3em;
-    border: 2px solid blue;
+.cabecalho-menu-item, .cabecalho-menu-item:hover {
+  font-size: 1.3em;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 900;
+  white-space: nowrap;
+  color: #6ccc1d;
+  text-shadow: 2px 3px 3px rgba(68, 68, 68, 0.515);
+  position: relative;
+  margin-right: 4.2em;
+  /* border: 2px solid blue */
 }
 
 #Ordem-crescente::before {
-    content: "R$⬆";
-    font-size: 0.5em;
-    opacity: 0;
-    position: relative;
-    right: 14px;
-    bottom: -30px;
-    -webkit-transition: all 0.8s;
-    transition: all 0.8s;
+  content: "R$⬆";
+  font-size: 0.5em;
+  opacity: 0;
+  position: absolute;
+  right: 110%;
+  bottom: -100%;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
 }
 
 #Ordem-crescente:hover::before {
-    font-size: 1.4em;
-    opacity: 1;
-    position: relative;
-    right: 20px;
-    bottom: 20px;
-    -webkit-transition: all 0.8s;
-    transition: all 0.8s;
+  font-size: 1.4em;
+  opacity: 1;
+  position: absolute;
+  right: 101.2%;
+  bottom: 84%;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
 }
 
 #Ordem-decrescente::before {
-    content: "R$⬇";
-    font-size: 0.5em;
-    opacity: 0;
-    position: relative;
-    right: 14px;
-    bottom: -30px;
-    -webkit-transition: all 0.8s;
-    transition: all 0.8s;
+  content: "R$⬇";
+  font-size: 0.5em;
+  opacity: 0;
+  position: absolute;
+  right: 109%;
+  bottom: -100%;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
 }
 
 #Ordem-decrescente:hover::before {
-    font-size: 1.4em;
-    opacity: 1;
-    position: relative;
-    right: 20px;
-    bottom: 20px;
-    -webkit-transition: all 0.8s;
-    transition: all 0.8s;
+  font-size: 1.4em;
+  opacity: 1;
+  position: absolute;
+  right: 101%;
+  bottom: 84%;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
 }
 
 #Github-link::after {
-    content: "...";
-    position: relative;
-    opacity: 0;
-    top: -20px;
-    font-size: small;
-    -webkit-transition: all 1s;
-    transition: all 1s;
+  content: "...";
+  position: relative;
+  opacity: 0;
+  top: -20px;
+  font-size: small;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 #Github-link:hover::after {
-    font-weight: bolder;
-    text-shadow: 0 0 2cm;
-    color: rgb(9, 199, 31);
-    opacity: 1;
-    top: 0px;
-    font-size: large;
-    -webkit-transition: all 1s;
-    transition: all 1s;
+  font-weight: bolder;
+  text-shadow: 2px 3px 3px rgba(68, 68, 68, 0.515);
+  color: #09c71f;
+  opacity: 1;
+  top: 0px;
+  font-size: large;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
+/*# sourceMappingURL=header.css.map */
