@@ -4,6 +4,7 @@
 class Jogo
 {
     private string $nomeJogo;
+    private int $nivelAvaliacao;
     private float | string $precoAntes;
     private float | string $precoDepois;
     private string $linkJogo;
@@ -12,9 +13,10 @@ class Jogo
     private string $descricaoJogo;
 
 
-    public function __construct(string $nome_jogo, float $preco_antes, float $preco_depois, string $link_jogo, string | null $link_video = null, string | null $link_foto = null, string $descricao_jogo = '')
+    public function __construct(string $nome_jogo, int $nivelAvaliacao, float $preco_antes, float $preco_depois, string $link_jogo, string | null $link_video = null, string | null $link_foto = null, string $descricao_jogo = '')
     {
         $this->nomeJogo = $nome_jogo;
+        $this->nivelAvaliacao = $nivelAvaliacao;
         $this->precoAntes = $preco_antes;
         $this->precoDepois = $preco_depois;
         $this->linkJogo = $link_jogo;
@@ -43,6 +45,7 @@ class Jogo
 
         $informacoes = [
             'nomeJogo' => $this->nomeJogo,
+            'nivelAvaliacao' => $this->nivelAvaliacao,
             'precoAntes' => $this->precoAntes,
             'precoDepois' => $this->precoDepois,
             'desconto' => $desconto,

@@ -6,16 +6,17 @@ use ErrorException;
 use PDO;
 use PDOStatement;
 
-trait InserirBanco
+trait inserirJogos
 {
-    public function inserirBanco(array $informacoesJogo) : void
+    public function inserirJogos(array $informacoesJogo) : void
     {   
         // Assim tenho segurança de que só será passada as informações para o banco caso todas funcionem.
 
-        $sqlQuery = "INSERT INTO {$this->schemaNome}.{$this->tableNome}
+        $sqlQuery = "INSERT INTO {$this->schemaNome}.{$this->tableJogos}
         VALUES (
             null,
             :nome,
+            :nivelAvaliacao,
             :precoAntes,
             :precoDepois,
             :desconto,
@@ -34,6 +35,7 @@ trait InserirBanco
         foreach ($informacoesJogo as $jogo) {
             $this->conexao->beginTransaction();
             $preparedStatement->bindParam(':nome', $jogo->nomeJogo, PDO::PARAM_STR);
+            $preparedStatement->bindParam(':nivelAvaliacao', $jogo->nivelAvaliacao, PDO::PARAM_INT);
             $preparedStatement->bindParam(':precoAntes', $jogo->precoAntes, PDO::PARAM_STR);
             $preparedStatement->bindParam(':precoDepois', $jogo->precoDepois, PDO::PARAM_STR);
             $preparedStatement->bindParam(':desconto', $jogo->desconto, PDO::PARAM_STR);

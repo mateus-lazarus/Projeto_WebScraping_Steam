@@ -70,7 +70,6 @@ a:hover {
 .cabecalho-menu {
   margin-top: 1%;
   padding: 1em;
-  /* border: 3px solid red */
 }
 
 .cabecalho-menu-item, .cabecalho-menu-item:hover {
@@ -81,8 +80,6 @@ a:hover {
   color: #6ccc1d;
   text-shadow: 2px 3px 3px rgba(68, 68, 68, 0.515);
   position: relative;
-  margin-right: 4.2em;
-  /* border: 2px solid blue */
 }
 
 #Ordem-crescente::before {

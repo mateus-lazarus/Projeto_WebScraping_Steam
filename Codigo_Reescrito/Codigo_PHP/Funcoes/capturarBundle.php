@@ -14,30 +14,33 @@ function capturarBundle(string $jogoLink, RemoteWebDriver $webdriver) : array
     // Para facilitar o acesso
     $wb = $webdriver;
 
+    // devido ao erro, não mais rodo bundles
+    return [];
 
     $wb->executeScript('window.open()');
     $wb->switchTo()->window($wb->getWindowHandles()[1]);
     $wb->get($jogoLink);
 
-    
-
-    if (str_contains($wb->getCurrentURL(), 'agecheck')) {
+    while (str_contains($wb->getCurrentURL(), 'agecheck') ) {
+        echo 'RONDANDO O FREAKING WHILE' . PHP_EOL;
         // Tentativa de Correção : 1
         // Criei uma nova função "findElementWithWait"
-        findElementWithWait($wb, 30, 100, '//*[@id="ageYear"]')->click();
+        findElementWithWait($wb, 5, 250, '//*[@id="ageYear"]')->click();
         $chutarInteiro = chutarInteiro(0, 5);
-        findElementWithWait($wb, 30, 100, "//*[@id='ageYear']/option[$chutarInteiro]")->click();
-        
-        findElementWithWait($wb, 30, 100, '//*[@id="ageDay"]')->click();
+        findElementWithWait($wb, 5, 250, "//*[@id='ageYear']/option[$chutarInteiro]")->click();
+
+        findElementWithWait($wb, 5, 250, '//*[@id="ageDay"]')->click();
         $chutarInteiro = chutarInteiro(0, 12);
-        findElementWithWait($wb, 30, 100, "//*[@id='ageDay']/option[$chutarInteiro]")->click();
+        findElementWithWait($wb, 5, 250, "//*[@id='ageDay']/option[$chutarInteiro]")->click();
         
-        findElementWithWait($wb, 30, 100, '//*[@id="ageMonth"]')->click();
+        findElementWithWait($wb, 5, 250, '//*[@id="ageMonth"]')->click();
         $chutarInteiro = chutarInteiro(0, 3);
-        findElementWithWait($wb, 30, 100, "//*[@id='ageMonth']/option[$chutarInteiro]")->click();
+        findElementWithWait($wb, 5, 250, "//*[@id='ageMonth']/option[$chutarInteiro]")->click();
         
-        findElementWithWait($wb, 30, 100, '//*[@class="agegate_text_container btns"]/a[1]')->click();
+        findElementWithWait($wb, 5, 250, '//*[@class="agegate_text_container btns"]/a[1]')->click();
     }
+
+    // O CÓDIGO NUNCA PASSA DAQUI.
 
     try {
         try {
@@ -61,7 +64,7 @@ function capturarBundle(string $jogoLink, RemoteWebDriver $webdriver) : array
 
 
     try {
-        $linkFoto = $wb->findElement(WebDriverBy::xpath('//*[@id="gameHeaderImageCtn"]/img'))->getAttribute('src');
+        $linkFoto = findElementWithWait($wb, 10, 250, '//*[@id="gameHeaderImageCtn"]/img')->getAttribute('src');
         $linkVideo = $wb->findElement(WebDriverBy::xpath('//*[@class="highlight_player_item highlight_movie"]'))->getAttribute('data-webm-hd-source');
 
     }
@@ -69,12 +72,12 @@ function capturarBundle(string $jogoLink, RemoteWebDriver $webdriver) : array
     catch (Exception) {
         // Não é considero um ERRO MENOR, pois nem todos jogos possuem algum vídeo
         try {
-            $linkFoto = $wb->findElement(WebDriverBy::xpath('//*[@id="gameHeaderImageCtn"]/img'))->getAttribute('src');
+            $linkFoto = findElementWithWait($wb, 10, 250, '//*[@id="gameHeaderImageCtn"]/img')->getAttribute('src');
             $linkVideo = 0;
         }
         
         catch (Exception) {
-            $linkFoto = $wb->findElement(WebDriverBy::xpath('//*[@id="package_header_container"]/img'))->getAttribute('src');
+            $linkFoto = findElementWithWait($wb, 10, 250, '//*[@id="package_header_container"]/img')->getAttribute('src');
             $linkVideo = 0;
         }
     }

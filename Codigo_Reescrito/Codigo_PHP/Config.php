@@ -16,7 +16,7 @@ $criteriosDeReview = array(
 );
 
 $criterioEmVigor = $criteriosDeReview[1];
-$rolagemMaxima = 2;
+$rolagemMaxima = 0;
 
 
 $enderecoDaPasta = 'C:\Users\Pichau\Documents\Blocos de Anotações do OneNote\SiteSteam';

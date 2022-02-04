@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACT,SAAS,EAAE,GAAG;CAAG;;AAErB,AAAA,mBAAmB,CAAC;EAChB,UAAU,EAAE,MAAM;EAClB,SAAS,EAAE,KAAK;CAAG;;AAGvB,AAAA,iBAAiB,CAAC;EACd,UAAU,EAAE,MAAM;EAClB,SAAS,EAAE,KAAK;CAAG;;AAEvB,AAAA,eAAe,CAAC;EACZ,UAAU,EAAE,MAAM;CAAG;;AAGzB,AAAA,eAAe,CAAC;EACZ,SAAS,EAAE,MAAM;CAAG",
+    "sources": [
+        "cardJogos.sass"
+    ],
+    "names": [],
+    "file": "cardJogos.css"
+}

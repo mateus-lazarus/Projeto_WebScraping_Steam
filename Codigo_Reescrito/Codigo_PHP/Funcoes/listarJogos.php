@@ -24,8 +24,6 @@ function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, 
     $ERRO_MAIOR = 0;
     $ERRO_MENOR = 0;
 
-    $numeroJogosBons = 0;
-
     $listaJogosBons = [];
 
 
@@ -51,6 +49,24 @@ function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, 
 
 
             if (verificarReview($reviewLido, $criterioEmVigor, $criteriosDeReview)) {
+                // Define o nivel de avaliação do jogo
+                switch ($reviewLido):
+                    case $criteriosDeReview[0]:
+                        $nivelAvaliacao = 0;
+                        break;
+                    case $criteriosDeReview[1]:
+                        $nivelAvaliacao = 1;
+                        break;
+                    case $criteriosDeReview[2]:
+                        $nivelAvaliacao = 2;
+                        break;
+                    case $criteriosDeReview[3]:
+                        $nivelAvaliacao = 3;
+                        break;
+
+                endswitch;
+
+
                 // Para quando o desconto retornar vazio (algo impossível, pois eu já coloquei o critério de apenas mostrar jogos com desconto)
                 $descontoLido = lerDesconto($XP, $x, $webdriver);
                 if ($descontoLido == false) {
@@ -110,14 +126,14 @@ function listarJogos(int $numeroJogosLidos, int $descontoMinimo, string $Xpath, 
 
                     if ($linkVideo == 0 || $linkVideo == '') {
                         if ($linkFoto == '') {
-                            $objetoTemporario = new Jogo($nomeJogoLido, $precoAntes, $precoDepois, $linkJogo);
+                            $objetoTemporario = new Jogo($nomeJogoLido, $nivelAvaliacao, $precoAntes, $precoDepois, $linkJogo);
                         }
 
-                        $objetoTemporario = new Jogo($nomeJogoLido, $precoAntes, $precoDepois, $linkJogo, link_foto:$linkFoto, descricao_jogo:$descricaoJogo);
+                        $objetoTemporario = new Jogo($nomeJogoLido, $nivelAvaliacao, $precoAntes, $precoDepois, $linkJogo, link_foto:$linkFoto, descricao_jogo:$descricaoJogo);
                     }
 
                     else {
-                        $objetoTemporario = new Jogo($nomeJogoLido, $precoAntes, $precoDepois, $linkJogo, $linkVideo, $linkFoto, $descricaoJogo);
+                        $objetoTemporario = new Jogo($nomeJogoLido, $nivelAvaliacao, $precoAntes, $precoDepois, $linkJogo, $linkVideo, $linkFoto, $descricaoJogo);
                     }
                     
                     array_push($listaJogosBons, $objetoTemporario->devolverInfo());

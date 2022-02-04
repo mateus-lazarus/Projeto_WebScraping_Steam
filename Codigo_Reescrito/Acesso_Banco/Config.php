@@ -10,7 +10,8 @@ trait Configuracoes
     protected $port = '3306';
     
     protected $schemaNome = 'webscraping_steam';
-    protected $tableNome = 'jogos';
+    protected $tableJogos = 'jogos';
+    protected $tableDadosEstatisticos = 'dadosestatisticos';
     
     protected $usuario = 'root';
     protected $senha = 'euseidetudo';

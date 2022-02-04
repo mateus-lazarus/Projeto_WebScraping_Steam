@@ -1,0 +1,22 @@
+.titulo-jogo {
+  font-size: 1em;
+}
+
+.precoAnterior-jogo {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.precoDepois-jogo {
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.avaliacao-jogo {
+  text-align: center;
+}
+
+.descricao-jogo {
+  font-size: 0.85em;
+}
+/*# sourceMappingURL=cardJogos.css.map */

@@ -37,15 +37,16 @@ $listaDeJogos = montarListasTemporarias();
 $listaOrdenada = ordenarLista($listaDeJogos);
 
 
-// Inserir informações no Banco
-$controlador = new Controlador();
-$controlador->limparSchema();
-$controlador->inserirBanco($listaOrdenada);
-
-
 // Para cronômetro
 $cronometro->stop();
 $contagemLista = count($listaOrdenada);
+
+$dadosEstatisticos = [
+    'jogosCadastrados' => $contagemLista,
+    'leBundles' => 0,
+    'tempoDeExecucao' => $cronometro->tempoTotalString(),
+    'segundosPorJogo' => '0'
+];
 
 // Cria arquivo com promoções e tempo de execucação
 escreverPromocoes(
@@ -61,3 +62,10 @@ escreverTempoDeExecucao(
     horaZero: $cronometro->chamarHoraZero(),
     tempoTotalString: $cronometro->tempoTotalString()
 );
+
+
+// Inserir informações no Banco
+$controlador = new Controlador();
+$controlador->limparSchema();
+$controlador->inserirJogos($listaOrdenada);
+$controlador->inserirDadosEstatisticos($dadosEstatisticos);
