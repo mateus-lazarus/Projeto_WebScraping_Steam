@@ -1,24 +1,20 @@
 body {
-    background: linear-gradient(216deg, #595c23, #b9c0b1, #6d6d6d, #c6c6c6, #437947, #3f95af, #437947, #c6c6c6, #686868, #c6c6c6, #595c23);
-    background-size: 1600% 1600%;
-
-    -webkit-animation: background-script 45s ease infinite;
-    -moz-animation: background-script 45s ease infinite;
-    animation: background-script 45s ease infinite;
+    background: linear-gradient(180deg, lightgreen, #dbc720, #c75936, #2b91af, currentColor, #090032);
+    overflow-x: hidden;
+    width: 100%;
 }
 
-@-webkit-keyframes background-script {
-    0%{background-position:88% 0%}
-    50%{background-position:13% 100%}
-    100%{background-position:88% 0%}
+
+
+main {
+    background-image: url('https://cdn.discordapp.com/attachments/935338634503143515/941242960551506001/Stars_background.png');
+    background-size: 72%;
+    background-position-y: 16%;
+    background-position-x: 4%;
+    background-repeat: revert;
 }
-@-moz-keyframes background-script {
-    0%{background-position:88% 0%}
-    50%{background-position:13% 100%}
-    100%{background-position:88% 0%}
-}
-@keyframes background-script {
-    0%{background-position:88% 0%}
-    50%{background-position:13% 100%}
-    100%{background-position:88% 0%}
+
+
+#informacoes-do-script {
+    background: linear-gradient(180deg, #9fd291, #a0d885, #a2de7b, #a4e372ba);
 }

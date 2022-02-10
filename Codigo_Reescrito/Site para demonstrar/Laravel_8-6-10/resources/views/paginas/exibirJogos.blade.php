@@ -2,6 +2,7 @@
 @extends('layouts.paginaDeJogos')
 
 
+
 <!-- Informações a serem enviadas para a página -->
 
 <!-- Titulo da pagina (o tipo de ordem de listagem sendo usado) -->
@@ -10,8 +11,9 @@ Ordem Crescente - Jogos
 @endsection
 
 
+
 <!-- Lista de jogos em ordem crescente -->
-@section('conteudo')
+@section('corpoDaPagina')
 
     <!-- Exibição dos jogos -->
     <section>
@@ -21,7 +23,7 @@ Ordem Crescente - Jogos
         <div name="Lista-de-Jogos" class="row m-3 justify-content-around">
 
             <!-- O próprio código carrega todos os jogos que foram listados no Banco -->
-            @include('layouts.cardJogo')
+            @include('layouts.cardJogoTeste')
 
         </div>
     </div>

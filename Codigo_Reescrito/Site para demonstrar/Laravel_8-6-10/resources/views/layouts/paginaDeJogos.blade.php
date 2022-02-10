@@ -6,15 +6,17 @@
         <title>@yield('tituloPagina')</title>
 
         <!-- Dependências -->
-        <link rel='stylesheet' type='text/css' href='reset.css'>
+        <link rel='stylesheet' type='text/css' href='css\reset.css'>
         <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous'>
         <script src="https://kit.fontawesome.com/af5cc2ff3a.js" crossorigin="anonymous"></script>
-
+        
         <!-- Arquivos de estilo -->
         <link rel='stylesheet' type='text/css' href='css\backgrounds.css'>
         <link rel='stylesheet' type='text/css' href='css\header.css'>
         <link rel='stylesheet' type='text/css' href='css\main.css'>
         <link rel='stylesheet' type='text/css' href='css\cardJogos.css'>
+
+        @yield('styleAdicional')
     </head>
 
 
@@ -74,7 +76,7 @@
         <main>
 
             <!-- Informações da última pesquisa feita -->
-            <section>
+            <section id="informacoes-do-script">
                 <br>
                 <br>
                 <div class="container-fluid m-2">
@@ -91,48 +93,6 @@
                                 <p class="informacoes-eficiencia p-2">{{ $dadosEstatisticos[0]['segundosPorJogo'] }} segundos por jogo.</p>
 
                             </div>
-
-                        </div>
-                        <div class="col-12 col-md-4 col-lg-4">
-                            <div class="m-3 m-md-4 m-lg-3 legenda">
-                                <div class="mb-2 mt-4 mt-lg-0">
-                                    <span>
-                                        Legenda
-                                    </span>
-                                </div>
-                                <div style="text-align: end;">
-                                    <div class="row justify-content-end">
-                                        <div class="mt-2 p-2 col-3 col-md-6 legenda-icones" style="font-size: 1.4em;">
-                                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                                        </div>
-                                        <span class="m-2 col-4">
-                                            Extremamente positivas
-                                        </span>
-                                    </div>
-                                    <div class="row justify-content-end">
-                                        <div class="mt-2 p-2 col-3 col-md-6 legenda-icones" style="font-size: 1.4em;">
-                                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                                        </div>
-                                        <span class="m-2 col-4">
-                                            Muito positivas
-                                        </span>
-                                    </div>
-                                    <div class="row justify-content-end">
-                                        <div class="mt-2 p-2 col-3 col-md-6 legenda-icones" style="font-size: 1.4em;">
-                                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                                        </div>
-                                        <span class="m-2 col-4">
-                                            Ligeiramente positivas
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -140,7 +100,7 @@
             </section>
 
 
-            @yield('conteudo')
+            @yield('corpoDaPagina')
 
 
         </main>

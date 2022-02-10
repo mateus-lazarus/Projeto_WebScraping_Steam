@@ -1,18 +1,176 @@
+// Utilidades
+
+// Para não permitir a seleção
+.select-off 
+    -webkit-touch-callout: none // iOS Safari //
+    -webkit-user-select: none // Safari //
+    -khtml-user-select: none // Konqueror HTML //
+    -moz-user-select: none // Old versions of Firefox //
+    -ms-user-select: none // Internet Explorer/Edge //
+    user-select: none // Non-prefixed version, currently
+                       // supported by Chrome, Edge, Opera and Firefox //
+
+
+// Para permitir a seleção
+.select-on
+    -webkit-touch-callout: text // iOS Safari //
+    -webkit-user-select: text // Safari //
+    -khtml-user-select: text // Konqueror HTML //
+    -moz-user-select: text // Old versions of Firefox //
+    -ms-user-select: text // Internet Explorer/Edge //
+    user-select: text // Non-prefixed version, currently
+                       // supported by Chrome, Edge, Opera and Firefox //
+
+
+
+// Para o corpo do Card do Jogo
+//
+    
 .titulo-jogo
-    font-size: 1em
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600&display=swap')
+    font-size: 1.3em
+    font-family: 'Poppins', sans-serif
+    font-weight: 600
+    font-style: italic
+    color: #000000d6
+    -webkit-text-stroke: 0.7px #b5b5b5d4
+
+
+
+#preco-jogo
+    background: linear-gradient(270deg, transparent, #0000003b, transparent)
+
+
 
 .precoAnterior-jogo
     text-align: center
-    font-size: 0.8em
+    font-size: 0.9em
+    text-decoration: line-through
     
+
 
 .precoDepois-jogo
     text-align: center
-    font-size: 0.9em
+    font-size: 1.2em
+    font-style: italic
+
+
 
 .avaliacao-jogo
     text-align: center
+    background: linear-gradient(270deg, transparent, #0000003b, transparent)
+    .fa-solid
+        font-size: 1.2em
+        color: #fff25a
+        -webkit-text-stroke: 0.5px #89812f
+
+    #avaliacao-jogo-texto
+        font-size: 0.9em
+        font-weight: 600
+        -webkit-text-stroke: 0.3px #000000
+
 
 
 .descricao-jogo
-    font-size: 0.85em
+    text-shadow: 1px 1px 2px #ffffff
+    font-size: 0.9em
+    font-style: italic
+    padding: 0% 0% 0% 3.5%
+
+
+
+
+
+
+
+// Para a imagem de capa do jogo e sua animação ao :hover
+
+
+// informações estáticas
+#capa-jogo-mascara
+    // opção 1
+    // position: absolute
+    // height: 100%
+    // width: 100%
+    // left: 0%
+    // background: radial-gradient(ellipse, #ffffff40, #00000070, #000000ad)
+
+    // opção 2
+    // position: absolute
+    // height: 100%
+    // width: 100%
+    // left: 0%
+    // background: radial-gradient(ellipse, #00000030, #00000040, #00000070, #00000080, black)
+
+    // opção 3
+    position: absolute
+    height: 100%
+    width: 100%
+    left: 0%
+    background: radial-gradient(ellipse, #00000050, #00000060, #00000080, #00000080, black)
+
+
+// informações dinâmicas
+.capa-jogo:hover
+    #capa-jogo-mascara
+        opacity: 0
+
+
+
+// Capa-Jogo
+
+// informações estáticas da capa
+.capa-jogo
+    min-height: 93%
+    max-height: 93%
+    position: relative
+    background-size: 100%
+
+    #informacoes-jogo
+        opacity: 0%
+        position: relative
+        top: 3%
+
+
+
+// informacoes dinâmicas da capa
+.capa-jogo:hover
+    background: linear-gradient(55deg, #ffe16b, #fff5ce, #fffae6)
+
+
+    #informacoes-jogo
+        opacity: 100%
+        position: relative
+        top: 0%
+        -webkit-transition: all 0.6s
+        transition: 0.6s
+
+
+
+// Informacoes-da-Capa
+
+// estático
+#informacoes-da-capa
+    .desconto-capa
+        position: absolute
+        top: 15%
+        width: 100%
+        text-align: center
+        font-size: 700%
+        color: #fff25a
+        text-shadow: 2px 3px 4px #898900
+
+    .avaliacao-capa
+        position: absolute
+        top: 55%
+        width: 100%
+        text-align: center
+        font-size: 490%
+        color: #fff25a
+        -webkit-text-stroke: 0.5px #89812f
+
+// dinâmico
+.capa-jogo:hover
+    #informacoes-da-capa
+        display: none
+
