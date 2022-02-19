@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\JogosController;
 
+Route::get('/index', [JogosController::class, 'ordemCrescente']);
 Route::get('/', [JogosController::class, 'ordemCrescente']);
 
 Route::get('/ordem-crescente', [JogosController::class, 'ordemCrescente']);
